@@ -1,3 +1,6 @@
+import { allContentQA } from "../model/Q&AProvider/Q&AProvider.js"
+import { levelDefinition } from "../model/Q&AProvider/levelDefinition.js"
+
 export class GameController {
 
   //datos dinamicos del juego se colocan aparte para no recargar nada.
@@ -34,10 +37,10 @@ export class GameController {
   }
 
   checkAnswer() {
-    console.log("hola mundo");
+    console.log("checkeando respuesta########");
+  }
+
+  retreat(){
+    console.log("me retiro del juego con los puntos que tengo");
   }
 }
-
-/*
-const radios = document.getElementsByClassName("form-check-input");
-*/

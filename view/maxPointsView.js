@@ -1,52 +1,77 @@
-export const  maxPointsView = () => {
-    console.log("entre al la vista del juego");
+import { SetBottomButtonsFunc } from "../controller/SetBottomButtonsFunc.js";
 
-    const container = document.createElement("div");
-    container.className = "container d-flex justify-content-center";
-    container.style = "padding-top:18vh;";
-    document.querySelector("body").appendChild(container);
+export const maxPointsView = () => {
+  const bButtonsFunctions = new SetBottomButtonsFunc();
 
-    const titlePoints = document.createElement("h2");
-    titlePoints.className = "card-title";
-    titlePoints.innerHTML = "⚜️Puntajes Maximos⚜️";
-    document.querySelector(".container").appendChild(titlePoints);
+/*
+######################################################################
+  Containers y headers
+######################################################################
+*/
+  const container = document.createElement("div");
+  container.className = "container d-flex justify-content-center";
+  container.style = "padding-top:18vh;";
+  document.querySelector("body").appendChild(container);
 
-    const container2 = document.createElement("div");
-    container2.className = "container d-flex justify-content-center";
-    container2.style = "width:50%;";
-    document.querySelector("body").appendChild(container2);
+  const titlePoints = document.createElement("h2");
+  titlePoints.className = "card-title";
+  titlePoints.innerHTML = "⚜️Puntajes Maximos⚜️";
+  document.querySelector(".container").appendChild(titlePoints);
 
-    const table = document.createElement("table");
-    table.className = "table";
-    document.querySelectorAll(".container")[1].appendChild(table);
+  const container2 = document.createElement("div");
+  container2.className = "container d-flex justify-content-center";
+  container2.style = "width:50%;";
+  document.querySelector("body").appendChild(container2);
 
-    const thead = document.createElement("thead");
-    document.querySelector(".table").appendChild(thead);
+/*
+######################################################################
+  Tabla y nombres base de columnas
+######################################################################
+*/
+  const table = document.createElement("table");
+  table.className = "table";
+  document.querySelectorAll(".container")[1].appendChild(table);
 
-    const tr = document.createElement("tr");
-    document.querySelector("thead").appendChild(tr);
+  const thead = document.createElement("thead");
+  document.querySelector(".table").appendChild(thead);
 
-    let trStrings = ["🔰#", "🎮 Jugador 🕹", "🌠 Puntaje", "🧬 ID"];
-    trStrings.forEach((text) => {
-      console.log(text);
-      const th = document.createElement("th");
-      th.scope = "col";
-      th.innerHTML = text;
-      document.querySelector("tr").appendChild(th);
-    });
+  const tr = document.createElement("tr");
+  document.querySelector("thead").appendChild(tr);
 
-    const br1 = document.createElement("br");
-    const br2 = document.createElement("br");
-    document.querySelectorAll(".container")[1].appendChild(br1);
-    document.querySelectorAll(".container")[1].appendChild(br2);
+  let trStrings = ["🔰#", "🎮 Jugador 🕹", "🌠 Puntaje", "🧬 ID"];
+  trStrings.forEach((text) => {
+    console.log(text);
+    const th = document.createElement("th");
+    th.scope = "col";
+    th.innerHTML = text;
+    document.querySelector("tr").appendChild(th);
+  });
 
-    const footerContainer = document.createElement("div");
-    footerContainer.className = "container d-flex justify-content-center";
-    footerContainer.id = "footerContainer";
-    document.querySelector("body").appendChild(footerContainer);
+/*
+######################################################################
+  Footer y boton
+######################################################################
+*/
 
-    const cardBody = document.createElement("a");
-    cardBody.className = "btn btn-primary";
-    cardBody.innerHTML = "Pantalla de inicio";
-    document.querySelector("#footerContainer").appendChild(cardBody);
-  }
+  const br1 = document.createElement("br");
+  const br2 = document.createElement("br");
+  document.querySelectorAll(".container")[1].appendChild(br1);
+  document.querySelectorAll(".container")[1].appendChild(br2);
+
+  const footerContainer = document.createElement("div");
+  footerContainer.className = "container d-flex justify-content-center";
+  footerContainer.id = "footerContainer";
+  document.querySelector("body").appendChild(footerContainer);
+
+  const gotoMain = document.createElement("a");
+  gotoMain.className = "btn btn-primary";
+  gotoMain.innerHTML = "Pantalla de inicio";
+  document.querySelector("#footerContainer").appendChild(gotoMain);
+
+/*
+######################################################################
+    Comandos finales
+######################################################################
+*/
+bButtonsFunctions.setMaxPointsBButtonsNavigation()
+};

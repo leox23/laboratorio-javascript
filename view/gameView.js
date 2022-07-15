@@ -1,8 +1,15 @@
 import { GameController } from "../controller/GameController.js";
+import {SetBottomButtonsFunc} from "../controller/SetBottomButtonsFunc.js"
 
 export const gameView = () => {
   const controller = new GameController();
+  const bButtonsFunctions = new SetBottomButtonsFunc();
 
+/*
+######################################################################
+  Containers and Headers
+######################################################################
+*/
   const cardContainer = document.createElement("div");
   cardContainer.className = "card text-center";
   cardContainer.style = "padding:15vh;";
@@ -31,17 +38,15 @@ export const gameView = () => {
 */
   const question = document.createElement("h2");
   question.className = "card-title";
-  //question.innerText = "aqui va mi pregunta";; para remover
   question.id = "question";
   document.querySelector(".card-body").appendChild(question);
 
   const levelAndPoints = document.createElement("p");
   levelAndPoints.className = "card-text";
   levelAndPoints.id = "round";
-  //levelAndPoints.innerText = "texto de nivel y puntos"; para remover
   document.querySelector(".card-body").appendChild(levelAndPoints);
 
-  /*
+/*
 ######################################################################
   Respuestas
 ######################################################################
@@ -110,25 +115,22 @@ export const gameView = () => {
   const br = document.createElement("br");
   document.querySelector(".card-body").appendChild(br);
 
-  controller.inflateNextQuestion()
 
-  /*
+/*
 ######################################################################
-  Footer
+  Footer y botones
 ######################################################################
 */
   const btnResponder = document.createElement("a");
   btnResponder.className = "btn btn-primary";
   btnResponder.innerText = "Responder!";
   btnResponder.style = "margin: 0px 20px;";
-  //btnResponder.addEventListener("click",/*TODO pendiente*/)
   document.querySelector(".card-body").appendChild(btnResponder);
 
   const btnRetirarse = document.createElement("a");
   btnRetirarse.className = "btn btn-primary";
   btnRetirarse.innerText = "Retirarse";
   btnRetirarse.style = "margin: 0px 20px;";
-  //btnResponder.addEventListener("click",/*TODO pendiente*/)
   document.querySelector(".card-body").appendChild(btnRetirarse);
 
   const cardFooter = document.createElement("div");
@@ -136,4 +138,14 @@ export const gameView = () => {
   cardFooter.innerText =
     "🚨 Recuerda que si tu respuesta es erronea, perderas el puntaje. Sino estas seguro, retirate! 🚨";
   document.querySelector(".card").appendChild(cardFooter);
+
+
+/*
+######################################################################
+  Comandos finales
+######################################################################
+*/
+controller.inflateNextQuestion()
+bButtonsFunctions.setGameViewBButtonsFunctions()
+
 }
