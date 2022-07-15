@@ -1,4 +1,4 @@
-export function  mainMenuView() {
+export const mainMenuView = () => {
     console.log("entre al main menu");
 
     const container = document.createElement("div");

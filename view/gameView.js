@@ -1,4 +1,8 @@
-export function gameView() {
+import { GameController } from "../controller/GameController.js";
+
+export const gameView = () => {
+  const controller = new GameController();
+
   const cardContainer = document.createElement("div");
   cardContainer.className = "card text-center";
   cardContainer.style = "padding:15vh;";
@@ -19,17 +23,22 @@ export function gameView() {
   actualPoints.innerText = "aqui van los puntos";
   actualPoints.id = "points";
   document.querySelector(".card-body").appendChild(actualPoints);
-
+  
+/*
+######################################################################
+  Pregunta y detalles de nivel
+######################################################################
+*/
   const question = document.createElement("h2");
   question.className = "card-title";
-  question.innerText = "aqui va mi pregunta";
+  //question.innerText = "aqui va mi pregunta";; para remover
   question.id = "question";
   document.querySelector(".card-body").appendChild(question);
 
   const levelAndPoints = document.createElement("p");
   levelAndPoints.className = "card-text";
   levelAndPoints.id = "round";
-  levelAndPoints.innerText = "texto de nivel y puntos";
+  //levelAndPoints.innerText = "texto de nivel y puntos"; para remover
   document.querySelector(".card-body").appendChild(levelAndPoints);
 
   /*
@@ -77,7 +86,6 @@ export function gameView() {
     }
   }
 
-  var answers = ["Respuesta1", "Respuesta 2", "Respuesta 3", "Respuesta 4"];
   for (let k = 0; k < 4; k++) {
     const formRadioContainer = document.createElement("div");
     formRadioContainer.className = "form-check";
@@ -94,7 +102,6 @@ export function gameView() {
 
     const radioLabel = document.createElement("label");
     radioLabel.className = "form-check-label";
-    radioLabel.innerText = answers[k];
     radioLabel.style = "width: 100%;";
     radioLabel.htmlFor = "flexRadioDefault" + k;
     document.querySelectorAll(".form-check")[k].appendChild(radioLabel);
@@ -102,6 +109,8 @@ export function gameView() {
 
   const br = document.createElement("br");
   document.querySelector(".card-body").appendChild(br);
+
+  controller.inflateNextQuestion()
 
   /*
 ######################################################################

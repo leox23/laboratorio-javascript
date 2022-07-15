@@ -1,4 +1,4 @@
-export function  maxPointsView() {
+export const  maxPointsView = () => {
     console.log("entre al la vista del juego");
 
     const container = document.createElement("div");
@@ -8,7 +8,7 @@ export function  maxPointsView() {
 
     const titlePoints = document.createElement("h2");
     titlePoints.className = "card-title";
-    titlePoints.innerHTML = "🌟⚜️Puntajes Maximos⚜️🌟";
+    titlePoints.innerHTML = "⚜️Puntajes Maximos⚜️";
     document.querySelector(".container").appendChild(titlePoints);
 
     const container2 = document.createElement("div");
