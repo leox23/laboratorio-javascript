@@ -1,27 +1,27 @@
 export const levelDefinition = [
   {
     number: 1,
-    level: "Muy Facil",
-    points: 1,
+    name: "Muy Facil",
+    points: 2,
   },
   {
     number: 2,
-    level: "Facil",
-    points: 1,
+    name: "Facil",
+    points: 4,
   },
   {
     number: 3,
-    level: "Media",
-    points: 1,
+    name: "Media",
+    points: 6,
   },
   {
     number: 4,
-    level: "Dificil",
-    points: 1,
+    name: "Dificil",
+    points: 8,
   },
   {
     number: 5,
-    level: "Muy Dificil",
-    points: 1,
+    name: "Muy Dificil",
+    points: 10,
   },
 ];

@@ -5,5 +5,4 @@ import { level4 } from "./level4Provider.js";
 import { level5 } from "./level5Provider.js";
 
 export const allContentQA = [level1, level2, level3, level4, level5];
-const pointsPerRound = [2, 4, 6, 8, 10];
 

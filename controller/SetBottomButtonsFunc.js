@@ -14,10 +14,29 @@ export class SetBottomButtonsFunc {
 
   setGameViewBButtonsFunctions() {
     const appControler = new GameController();
-    console.log("entre a bb game");
 
     const btnResponder = document.querySelectorAll("a")[0];
-    btnResponder.addEventListener("click", appControler.checkAnswer);
+    btnResponder.addEventListener("click", () => {
+      // seleccionar todos los radios inputs
+      const radios = document.querySelectorAll(".form-check-input");
+      var checkPosition = "";
+      console.log("antes de entrar al for valgo: " + checkPosition);
+      //verificar cual de todos esta selecionado
+      for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          checkPosition = i;
+          radios[i].checked = false;
+          break;
+        }
+      }
+
+      // extrayendo string de respuestas
+      const answerNode = document.querySelectorAll(".form-check-label")[checkPosition]
+      const answer = answerNode.innerText
+
+      //mandarlo a verificacion
+      appControler.checkAnswer(answer)
+    });
 
     const btnRetirarse = document.querySelectorAll("a")[1];
     btnRetirarse.addEventListener("click", appControler.retreat);

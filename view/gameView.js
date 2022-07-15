@@ -1,8 +1,6 @@
-import { GameController } from "../controller/GameController.js";
 import {SetBottomButtonsFunc} from "../controller/SetBottomButtonsFunc.js"
 
 export const gameView = () => {
-  const controller = new GameController();
   const bButtonsFunctions = new SetBottomButtonsFunc();
 
 /*
@@ -33,7 +31,7 @@ export const gameView = () => {
   
 /*
 ######################################################################
-  Pregunta y detalles de nivel
+  question y detalles de nivel
 ######################################################################
 */
   const question = document.createElement("h2");
@@ -48,7 +46,7 @@ export const gameView = () => {
 
 /*
 ######################################################################
-  Respuestas
+  Items Respuestas (containers y espaciados)
 ######################################################################
 */
   const radioContainers = document.createElement("div");
@@ -91,6 +89,11 @@ export const gameView = () => {
     }
   }
 
+/*
+######################################################################
+  Respuestas (radio buttons y labels)
+######################################################################
+*/
   for (let k = 0; k < 4; k++) {
     const formRadioContainer = document.createElement("div");
     formRadioContainer.className = "form-check";
@@ -145,7 +148,6 @@ export const gameView = () => {
   Comandos finales
 ######################################################################
 */
-controller.inflateNextQuestion()
 bButtonsFunctions.setGameViewBButtonsFunctions()
 
 }
