@@ -6,13 +6,11 @@ import { GameController } from "./GameController.js";
 export class AppNavigation {
 
     init(){
-        const c = new GameController();
         console.log("inicie por init");
-        //mainMenuView()
-
-        //esto debe ir dentro de main menu
-        gameView()
-        c.inflateNextQuestion()
+        
+        const a = new AppNavigation();
+        a.clearView()
+        a.gotoMainMenuView()
     }
 
     clearView() {
@@ -29,9 +27,16 @@ export class AppNavigation {
     gotoGameView(){
         const a = new AppNavigation();  
         const c = new GameController();
-        a.clearView()
+        a.clearView()        
+        
+        // attributos mantienen el estado
+        const body = document.querySelector("body")
+        body.setAttribute("level", 0)
+        body.setAttribute("setindex", 0)
+        body.setAttribute("points", 0)
+
         gameView()
-        c.inflateNextQuestion()
+        c.inflateNextQuestion(0)
     }
 
     gotoNextQuestion(){

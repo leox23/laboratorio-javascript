@@ -25,7 +25,6 @@ export const gameView = () => {
 
   const actualPoints = document.createElement("h1");
   actualPoints.className = "card-title";
-  actualPoints.innerText = "aqui van los puntos";
   actualPoints.id = "points";
   document.querySelector(".card-body").appendChild(actualPoints);
   

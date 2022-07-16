@@ -20,7 +20,6 @@ export class SetBottomButtonsFunc {
       // seleccionar todos los radios inputs
       const radios = document.querySelectorAll(".form-check-input");
       var checkPosition = "";
-      console.log("antes de entrar al for valgo: " + checkPosition);
       //verificar cual de todos esta selecionado
       for (let i = 0; i < radios.length; i++) {
         if (radios[i].checked) {
@@ -31,9 +30,18 @@ export class SetBottomButtonsFunc {
       }
 
       // extrayendo string de respuestas
-      const answerNode = document.querySelectorAll(".form-check-label")[checkPosition]
-      const answer = answerNode.innerText
-
+      const answerNode = document.querySelectorAll(".form-check-label")
+      [checkPosition]
+      let answer = ""
+      
+      try {
+        answer = answerNode.textContent
+      } catch (error) {
+        //console.error(error);
+        alert("⚠️Es necesario seleccionar una de las respuestas!⚠️");
+        return
+      }
+    
       //mandarlo a verificacion
       appControler.checkAnswer(answer)
     });
