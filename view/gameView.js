@@ -1,8 +1,10 @@
-import {SetBottomButtonsFunc} from "../controller/SetBottomButtonsFunc.js"
+import { ListenerSetter } from "../controller/ListenerSetter.js";
 
+/**
+ * Funcion que contiene la creacion de toda la vista jugable.
+ */
 export const gameView = () => {
-  const bButtonsFunctions = new SetBottomButtonsFunc();
-
+  const bButtonsFunctions = new ListenerSetter();
 /*
 ######################################################################
   Containers and Headers
@@ -10,7 +12,15 @@ export const gameView = () => {
 */
   const cardContainer = document.createElement("div");
   cardContainer.className = "card text-center";
-  cardContainer.style = "padding:15vh;";
+  cardContainer.style = `
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    height:fit-content;
+    width:650px;
+    padding:20px
+  `;
   document.querySelector("body").appendChild(cardContainer);
 
   const cardBody = document.createElement("div");
@@ -27,7 +37,7 @@ export const gameView = () => {
   actualPoints.className = "card-title";
   actualPoints.id = "points";
   document.querySelector(".card-body").appendChild(actualPoints);
-  
+
 /*
 ######################################################################
   question y detalles de nivel
@@ -117,20 +127,19 @@ export const gameView = () => {
   const br = document.createElement("br");
   document.querySelector(".card-body").appendChild(br);
 
-
 /*
 ######################################################################
   Footer y botones
 ######################################################################
 */
   const btnResponder = document.createElement("a");
-  btnResponder.className = "btn btn-primary";
+  btnResponder.className = "btn btn-dark";
   btnResponder.innerText = "Responder!";
   btnResponder.style = "margin: 0px 20px;";
   document.querySelector(".card-body").appendChild(btnResponder);
 
   const btnRetirarse = document.createElement("a");
-  btnRetirarse.className = "btn btn-primary";
+  btnRetirarse.className = "btn btn-dark";
   btnRetirarse.innerText = "Retirarse";
   btnRetirarse.style = "margin: 0px 20px;";
   document.querySelector(".card-body").appendChild(btnRetirarse);
@@ -141,12 +150,10 @@ export const gameView = () => {
     "🚨 Recuerda que si tu respuesta es erronea, perderas el puntaje. Sino estas seguro, retirate! 🚨";
   document.querySelector(".card").appendChild(cardFooter);
 
-
 /*
 ######################################################################
-  Comandos finales
+  Set Listeners
 ######################################################################
 */
-bButtonsFunctions.setGameViewBButtonsFunctions()
-
-}
+  bButtonsFunctions.setGameViewBButtonsFunctions();
+};

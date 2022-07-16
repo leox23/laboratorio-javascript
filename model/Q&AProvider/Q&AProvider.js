@@ -4,5 +4,6 @@ import { level3 } from "./level3Provider.js";
 import { level4 } from "./level4Provider.js";
 import { level5 } from "./level5Provider.js";
 
+//Contenido de preguntas y respuestas del juego, tres niveles de arreglos.
 export const allContentQA = [level1, level2, level3, level4, level5];
 

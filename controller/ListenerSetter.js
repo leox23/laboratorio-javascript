@@ -1,7 +1,12 @@
 import { GameController } from "./GameController.js";
 import { AppNavigation } from "./AppNavigation.js";
-
-export class SetBottomButtonsFunc {
+/*
+######################################################################
+  Clase para establecer los listeners de los botones inferiores 
+  de las vistas
+######################################################################
+*/
+export class ListenerSetter {
   setMainMenuViewBButtonsNavigation() {
     const appNavigation = new AppNavigation();
 
@@ -30,20 +35,20 @@ export class SetBottomButtonsFunc {
       }
 
       // extrayendo string de respuestas
-      const answerNode = document.querySelectorAll(".form-check-label")
-      [checkPosition]
-      let answer = ""
-      
+      const answerNode =
+        document.querySelectorAll(".form-check-label")[checkPosition];
+      let answer = "";
+
       try {
-        answer = answerNode.textContent
+        answer = answerNode.textContent;
       } catch (error) {
         //console.error(error);
         alert("⚠️Es necesario seleccionar una de las respuestas!⚠️");
-        return
+        return;
       }
-    
+
       //mandarlo a verificacion
-      appControler.checkAnswer(answer)
+      appControler.checkAnswer(answer);
     });
 
     const btnRetirarse = document.querySelectorAll("a")[1];
@@ -52,7 +57,7 @@ export class SetBottomButtonsFunc {
 
   setMaxPointsBButtonsNavigation() {
     const appNavigation = new AppNavigation();
-    
+
     const gotoMain = document.querySelectorAll("a")[0];
     gotoMain.addEventListener("click", appNavigation.gotoMainMenuView);
   }
