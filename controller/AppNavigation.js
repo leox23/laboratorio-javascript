@@ -24,8 +24,7 @@ export class AppNavigation {
         align-items: center;
         align-content: center;`;
 
-    const a = new AppNavigation();
-    a.gotoMainMenuView()
+    this.gotoMainMenuView()
   }
 
 /**
@@ -39,8 +38,8 @@ export class AppNavigation {
  * Metodo para ir a la pantalla principal del juego.
  */
   gotoMainMenuView() {
-    const a = new AppNavigation();
-    a.clearView();
+    const navigate = new AppNavigation();
+    navigate.clearView();
     mainMenuView();
   }
 
@@ -48,25 +47,25 @@ export class AppNavigation {
  * Metodo que prepara todo el estado del comienzo del juego, y crea toda la pantalla del juego.
  */
   gotoGameView() {
-    const a = new AppNavigation();
-    const i = new LayoutInflater();
-    const s = new StateHandler();
-    a.clearView();
-    s.setStateLevel(0)
-    s.setStateSetOfQAIndex(0)
-    s.setStatePoints(0)
+    const navigate = new AppNavigation();
+    const layout = new LayoutInflater();
+    const gameState = new StateHandler();
+    navigate.clearView();
+    gameState.setStateLevel(0)
+    gameState.setStateSetOfQAIndex(0)
+    gameState.setStatePoints(0)
     gameView();
-    i.inflateNextQuestion(); 
+    layout.inflateNextQuestion(); 
   }
 
 /**
  * Metodo para ir a la vista maximos puntajes y visualizar la vista total.
  */
   gotoMaxPointsView() {
-    const a = new AppNavigation();
-    const i = new LayoutInflater();
-    a.clearView();
+    const navigate = new AppNavigation();
+    const layout = new LayoutInflater();
+    navigate.clearView();
     maxPointsView();
-    i.inflateHighScores();
+    layout.inflateHighScores();
   }
 }

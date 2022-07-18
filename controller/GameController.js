@@ -15,17 +15,17 @@ export class GameController {
    * @param {String} answer Respuesta seleccionada por el usuario.
    */
   checkAnswer(answer) {
-    console.log("checkeando si es respuesta correcta########");
-    const s = new StateHandler();
+    const gameState = new StateHandler();
+    const navigate = new AppNavigation();
 
-    let level = s.getState().level
-    let setindex = s.getState().setOfQAIndex
-    let points = s.getState().points
+    let level = gameState.getState().level
+    let setindex = gameState.getState().setOfQAIndex
+    let points = gameState.getState().points
     let correctAnswer = allContentQA[level][setindex].answer1;
 
     if (answer == correctAnswer) {
       if (level == 4) {
-        const n = new AppNavigation();
+        const navigate = new AppNavigation();
         const DB = new Database();
 
         points = parseInt(points) + parseInt(levelDefinition[level].points);
@@ -40,27 +40,23 @@ export class GameController {
         DB.setPlayerPoints(namePlayer, points);
 
         sleep(200).then(() => {
-          n.gotoMaxPointsView();
+          navigate.gotoMaxPointsView();
         });
       } else {
         level++;
         setindex++;
         points = parseInt(points) + parseInt(levelDefinition[level - 1].points);
-        s.setStateLevel(level)
-        s.setStateSetOfQAIndex(setindex)
-        s.setStatePoints(points)
-        const i = new LayoutInflater();
-        i.inflateNextQuestion(level);
+        gameState.setStateLevel(level)
+        gameState.setStateSetOfQAIndex(setindex)
+        gameState.setStatePoints(points)
+        const layout = new LayoutInflater();
+        layout.inflateNextQuestion(level);
       }
     } else {
       alert(
         "❌❌❌❌❌❌❌Respuesta incorrecta❌❌❌❌❌❌❌\n                      💢Acabas de perder todo tu puntaje💢"
       );
-      s.setStateLevel(level)
-      s.setStateSetOfQAIndex(setindex)
-      s.setStatePoints(points)
-      const n = new AppNavigation();
-      n.gotoMainMenuView();
+      navigate.gotoMainMenuView();
     }
   }
 
@@ -68,17 +64,16 @@ export class GameController {
  * Metodo dedicado al manejo del boton retirarse, en distintos contextos.
  */
   retreat() {
-    const n = new AppNavigation();
+    const navigate = new AppNavigation();
     const DB = new Database();
-    const s = new StateHandler();
-    const body = document.querySelector("body");
-    let points = s.getState().points
+    const gameState = new StateHandler();
+    let points = gameState.getState().points
 
     if (points == 0) {
       let ok = confirm(
         "Aun no tienes puntos y ¡esta pregunta esta facil!, ¿igual quieres salir?"
       );
-      if (ok) n.gotoMainMenuView();
+      if (ok) navigate.gotoMainMenuView();
     } else {
       let ok = confirm("¿Seguro quieres retirarte? conservaras los puntos.");
       if (ok) {
@@ -91,7 +86,7 @@ export class GameController {
         DB.setPlayerPoints(namePlayer, points);
 
         sleep(200).then(() => {
-          n.gotoMaxPointsView();
+          navigate.gotoMaxPointsView();
         });
       }
     }

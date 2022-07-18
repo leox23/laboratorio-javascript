@@ -6,9 +6,9 @@ import { StateHandler } from "../model/StateHandler.js";
 export class LayoutInflater {
   //datos dinamicos del juego se colocan aparte para no recargar nada.
   inflateNextQuestion() {
-    const s = new StateHandler();
-    let level = s.getState().level
-    let points = s.getState().points
+    const gameState = new StateHandler();
+    let level = gameState.getState().level
+    let points = gameState.getState().points
 
     const body = document.querySelector("body");
 
@@ -48,8 +48,9 @@ export class LayoutInflater {
       radioLabel.innerText = allAnswers[i];
     }
 
-    s.setStateSetOfQAIndex(setSelectedIndex)
+    gameState.setStateSetOfQAIndex(setSelectedIndex)
   }
+  
 /*
 ######################################################################
   Listar los jugadores y puntos de la base de datos 

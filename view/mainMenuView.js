@@ -4,7 +4,7 @@ import { ListenerSetter } from "../controller/ListenerSetter.js";
  * Funcion que contiene la creacion de toda la vista del menu principal.
  */
 export const mainMenuView = () => {
-  const bButtonsFunctions = new ListenerSetter();
+  const listenerSetter = new ListenerSetter();
 /*
 ######################################################################
   Containers y headers
@@ -76,5 +76,5 @@ export const mainMenuView = () => {
     Set listeners
 ######################################################################
 */
-  bButtonsFunctions.setMainMenuViewBButtonsNavigation();
+  listenerSetter.setMainMenuViewBButtonsNavigation();
 };

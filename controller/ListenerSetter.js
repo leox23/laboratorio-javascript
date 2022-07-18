@@ -1,11 +1,10 @@
 import { GameController } from "./GameController.js";
 import { AppNavigation } from "./AppNavigation.js";
-/*
-######################################################################
-  Clase para establecer los listeners de los botones inferiores 
+
+/**
+ * Clase para establecer los listeners de los botones inferiores 
   de las vistas
-######################################################################
-*/
+ */
 export class ListenerSetter {
   setMainMenuViewBButtonsNavigation() {
     const appNavigation = new AppNavigation();

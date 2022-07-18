@@ -4,7 +4,7 @@ import { ListenerSetter } from "../controller/ListenerSetter.js";
  * Funcion que contiene la creacion de toda la vista jugable.
  */
 export const gameView = () => {
-  const bButtonsFunctions = new ListenerSetter();
+  const listenerSetter = new ListenerSetter();
 /*
 ######################################################################
   Containers and Headers
@@ -155,5 +155,5 @@ export const gameView = () => {
   Set Listeners
 ######################################################################
 */
-  bButtonsFunctions.setGameViewBButtonsFunctions();
+listenerSetter.setGameViewBButtonsFunctions();
 };

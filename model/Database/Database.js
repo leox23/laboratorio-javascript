@@ -39,7 +39,6 @@ export class Database {
  */
     getScoreList(){
         let miListaRecuperada = JSON.parse(localStorage.getItem("list"))
-        console.log(miListaRecuperada);
         return miListaRecuperada
     } 
 }

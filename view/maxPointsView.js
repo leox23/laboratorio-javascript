@@ -4,7 +4,7 @@ import { ListenerSetter } from "../controller/ListenerSetter.js";
  * Funcion que contiene toda la creacion de la parte estatica de la pantalla Maximos Puntajes.
  */
 export const maxPointsView = () => {
-  const bButtonsFunctions = new ListenerSetter();
+  const listenerSetter = new ListenerSetter();
 /*
 ######################################################################
   Containers y headers
@@ -53,7 +53,6 @@ export const maxPointsView = () => {
 
   let columnStrings = ["🔰", "🎮 Jugador 🕹", " Puntaje", "🧬 ID"];
   columnStrings.forEach((text) => {
-    console.log(text);
     const th = document.createElement("th");
     th.scope = "col";
     th.innerHTML = text;
@@ -86,5 +85,5 @@ export const maxPointsView = () => {
     Set Listeners
 ######################################################################
 */
-  bButtonsFunctions.setMaxPointsBButtonsNavigation();
+listenerSetter.setMaxPointsBButtonsNavigation();
 };
